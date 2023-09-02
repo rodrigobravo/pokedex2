@@ -1,24 +1,29 @@
 <div>
-  <input type="text" [(ngModel)]="searchTerm" placeholder="Enter Pokémon name">
-  <button (click)="searchPokemon()">Search</button>
+  <mat-form-field>
+    <input matInput [(ngModel)]="searchTerm" placeholder="Enter Pokémon name">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="searchPokemon()">Search</button>
 </div>
+
 <div *ngIf="pokemon">
   <h2>Pokémon Name: {{ pokemon.name }}</h2>
-<div *ngIf="pokemon">
-  <h1>Artwork</h1>
-
-<ul >
-  <li>Front
-    <img src="{{ pokemon.sprites.front_default }}" alt="">
-
-  </li>
-  <li>Back
-    <img src="{{ pokemon.sprites.back_default }}" alt="">
-
-  </li>
-</ul>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Artwork</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <ul>
+        <li>Front
+          <img [src]="pokemon.sprites.front_default" alt="">
+        </li>
+        <li>Back
+          <img [src]="pokemon.sprites.back_default" alt="">
+        </li>
+      </ul>
+    </div>
+  </mat-expansion-panel>
 </div>
-</div>
+
 <div *ngIf="error">
   <p>{{ error }}</p>
   <h1>Não encontramos esse Pokemon !!!!</h1>
