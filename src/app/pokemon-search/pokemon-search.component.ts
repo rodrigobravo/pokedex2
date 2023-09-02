@@ -22,7 +22,6 @@ export class PokemonSearchComponent {
     this.pokemonService.getPokemon(this.searchTerm)
       .then((data) => {
         this.pokemon = data;
-        console.log(this.pokemon.official-artwork.front_default);
         this.error = undefined;
       })
       .catch((error) => {
